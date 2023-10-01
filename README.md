@@ -1,9 +1,8 @@
-Food Fusion Restaurant Website
+# Food Fusion Restaurant Website
+Solo Capstone Project @ Lewis University
 
-Capstone Project @ Lewis University
-
-Welcome to our exciting restaurant website project, where we have combined innovation and 
-functionality to create a dynamic platform that brings the essence of our restaurant to the
+## Introduction
+Welcome to our exciting restaurant website project, where we have combined innovation and functionality to create a dynamic platform that brings the essence of our restaurant to the
 digital world. This project is a culmination of our passion for culinary excellence and a 
 commitment to providing our customers with a seamless online experience. Through this website, 
 we aim to offer a virtual gateway for users to explore our menu, conveniently make reservations, 
