@@ -1,5 +1,5 @@
 # Food Fusion Restaurant Website
-Solo Capstone Project @ Lewis University
+Solo Capstone Project for CPSC-49200-001 @ Lewis University.
 
 ## Introduction
 Welcome to our exciting restaurant website project, where we have combined innovation and functionality to create a dynamic platform that brings the essence of our restaurant to the
