@@ -1,0 +1,175 @@
+<!DOCTYPE html >
+<html>
+<head>
+  <meta charset="utf-8" >
+   <title>Food Fusion: Red Velvet Cake</title>
+   <style type="text/css">
+      ol, ul { 
+      list-style-type: none;
+      }
+	   
+	  .red_velvet-form {
+      width: 70%;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      top: 13%;
+      background-color: rgba(255, 255, 255, 0.8);
+      padding: 30px;
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+      border-radius: 20px;
+      margin-bottom: 70px;
+    }
+
+	.description h1 {
+      color: #fac031;
+	  text-align: center;
+      margin-bottom: 30px;
+      margin-top: 30px;
+    }
+	
+	.description p {
+	  text-align: center; /* Center-align the descriptive text */
+	}
+
+    .red_velvet-form fieldset legend {
+      color: #fac031;
+    }
+
+    .red_velvet-form input[type="text"],
+    .red_velvet-form input[type="tel"],
+    .red_velvet-form input[type="email"],
+	.red_velvet-form select,
+    .red_velvet-form textarea {
+      border: 1px solid #fac031;
+	  padding: 8px;
+	  margin-bottom: 10px;
+	  width: 100%;
+      box-sizing: border-box;
+    }
+
+    .red_velvet-form input[type="submit"] {
+      background-color: #fac031;
+      color: #fff;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .red_velvet-form input[type="submit"]:hover {
+      background-color: #f59500;
+    }
+	.goback-btn {
+	  display: inline-block;
+	  padding: 10px 20px;
+	  background-color: #f5f5f5;
+	  color: #333;
+	  border: 1px solid #ccc;
+	  text-decoration: none;
+	  font-weight: bold;
+	  cursor: pointer;
+	}
+
+	.goback-btn:hover {
+		background-color: #e0e0e0;
+	}
+   </style>
+</head>
+
+<body>
+
+<div class="description">
+<h1>Food Fusion: Irresistable Red Velvet Cake</h1>
+
+<p>Experience the allure of indulgence with our irresistible red velvet cake. Each slice is a masterpiece of rich flavor, complemented by a velvety texture that melts in your mouth. Topped with a luxurious cream cheese frosting and adorned with a sprinkle of goodness, our red velvet cake is a masterpiece. Treat yourself to a slice of pure delight and let the enchanting flavors of red velvet transport you to a world of pure bliss.</p>
+
+<form action="red_velvet.php" method="post" class="red_velvet-form">
+
+<fieldset>
+  <legend>Your Information</legend>
+  <ul>
+    <li><label for="form-name">Name:</label> <input type="text" name="customername" id="form-name"></li>
+    <li><label for="form-address">Address:</label> <input type="text" name="address" id="form-address"></li>
+    <li><label for="form-tel">Phone Number:</label> <input type="tel" name="telephone" id="form-tel"></li>
+    <li><label for="form-email">Email: <input type="email" name="email" id="form-email"></label></li>
+    
+	<!-- PAYMENT METHOD HTML CODE -->  
+	<li><label for="form-payment">Payment Method:</label> 
+        <select name="payment_method">
+            <option value="Credit Card">Credit Card</option>
+            <option value="Debit Card">Debit Card</option>
+        </select>
+    </li>
+	
+	<li><label for="form-card">Card Number:</label> <input type="text" name="card" id="form-card"></li>
+	<li><label for="form-expiration">Expiration Date: <input type="text" name="expiration" id="form-expiration"></label></li>
+    <li><label for="form-cvv">CVV: <input type="text" name="cvv" id="form-cvv"></label></li>
+	<!-- PAYMENT METHOD HTML CODE -->
+	
+	<li>Delivery Instructions:<br>
+    <textarea name="instructions" rows="4" cols="50" maxlength="400'" id="form-story" placeholder="No more than 400 characters long"></textarea></li>
+  </ul>
+</fieldset>
+
+<h2>Red Velvet Cake: Velvety Goodness</h2>
+
+<fieldset>
+  <legend>Red Velvet Cake Details</legend>
+  <fieldset>  
+    <legend>Select a Size <em>(Choose one)</em>:</legend>
+    <ul>
+      <li><label><input type="radio" name="size" value="small">Small</label></li>
+      <li><label><input type="radio" name="size" value="medium">Medium</label></li>
+      <li><label><input type="radio" name="size" value="large">Large</label></li>
+	</ul>
+  </fieldset>
+
+  <fieldset>
+  <legend>Quantity</legend>
+  <p>How many red velvet cakes: 
+  <select name="red_velvet" size="1" id="quantitySelect">
+    <option>1</option>
+    <option>2</option>
+    <option>3</option>
+    <option>4</option>
+    <option>5</option>
+    <option>6</option>
+  </select>
+  </p>
+  </fieldset>
+  
+  <fieldset>
+  <legend>Total</legend>
+  <p><strong>Total Price:</strong> $<span id="totalPrice">7.99</span></p>
+  </fieldset>
+
+</fieldset> 
+
+<p><input type="submit" value="Place Order">
+<input type="reset"></p>
+<a href="index.php#Menu" class="goback-btn">Go Back</a>
+
+</form>
+<script>
+  // Function to update the total price based on the quantity selected
+  function updateTotalPrice() {
+    const redvelvetPrice = 7.99; // Price of red velvet cake
+    const quantitySelect = document.getElementById('quantitySelect');
+    const totalPriceElement = document.getElementById('totalPrice');
+
+    const quantity = parseInt(quantitySelect.value);
+    const totalPrice = redvelvetPrice * quantity;
+    totalPriceElement.textContent = totalPrice.toFixed(2); // Display total with two decimal places
+  }
+
+  // Add an event listener to the quantity select element
+  const quantitySelect = document.getElementById('quantitySelect');
+  quantitySelect.addEventListener('change', updateTotalPrice);
+
+  // Call the function initially to display the default total price
+  updateTotalPrice();
+</script>
+</body>
+</html>

@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title> Add To Cart </title>
+<meta name="Generator" content="EditPlus">
+<meta name="Author" content="">
+<meta name="Keywords" content="">
+<meta name="Description" content="">
+
+<style type="text/css">
+	body {
+        background-repeat: repeat;
+        background-size: cover;
+    }
+	
+	.logo img {
+        width: 150px;
+        cursor: pointer;
+        margin: 7px 0 0 0;
+    }
+	
+	.container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        align-items: flex-start;
+    }
+
+    .card {
+        flex-basis: 200px;
+        margin: 10px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        text-align: center;
+        background-color: #f9f9f9;
+    }
+	
+    .card img {
+        width: 150px; /* Set the desired width for the images */
+        height: 150px; /* Set the desired height for the images */
+        object-fit: cover; /* Maintain aspect ratio and fill the container */
+    }
+
+    .title {
+        font-size: 20px;
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+
+    button {
+        margin-top: 10px;
+        background-color: #3cb739;
+        color: #fff;
+        border: none;
+        padding: 5px 10px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #2a8d27;
+    }
+
+    .cart {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 100px;
+        padding: 10px;
+        text-align: center;
+		background-color: #f5f5f5;
+    }
+
+    .cartImg {
+        margin-bottom: 10px;
+    }
+
+    .cartImg > img {
+		width: 100px; /* Set the same width as the images in the card section */
+		height: 100px; /* Set the same height as the images in the card section */
+		object-fit: cover; /* Maintain aspect ratio and fill the container */
+    }
+	
+	#checkoutBtn {
+        background-color: #4CAF50;
+        color: #fff;
+        border: none;
+        padding: 10px;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 10px;
+        transition: background-color 0.3s ease;
+		display: none;
+    }
+
+    #checkoutBtn:hover {
+        background-color: #388E3C;
+    }
+	
+	.checkout-container {
+		display: flex;
+		justify-content: center;
+		margin-top: 10px;
+	}
+
+	.goback-btn {
+		display: inline-block;
+		padding: 10px 20px;
+		background-color: #f5f5f5;
+	    color: #333;
+		border: 1px solid #ccc;
+		text-decoration: none;
+		font-weight: bold;
+		cursor: pointer;
+	}
+
+	.goback-btn:hover {
+		background-color: #e0e0e0;
+	}
+</style>
+</head>
+
+<body>
+
+<div class="logo">
+    <img src="image/logo.png">
+</div>
+
+<h1>Individual Items</h1>
+<h3><em>*Select Only One Item<em></h3>
+
+<div class="container">
+
+	<div class="card" id="item1">
+		<img src="burger.webp">
+		<div class="title">Cheeseburger</div>
+		<div>
+			<label>Price: $7.80</label>
+		</div>
+		<button onclick="addToCart('item1')">Add To Cart</button>
+	</div>
+	
+	<div class="card" id="item2">
+		<img src="pasta.jpg">
+		<div class="title">Pasta</div>
+		<div>
+			<label>Price: $7.50</label>
+		</div>
+		<button onclick="addToCart('item2')">Add To Cart</button>
+	</div>
+	
+	<div class="card" id="item3">
+		<img src="lasagna.webp">
+		<div class="title">Lasagna</div>
+		<div>
+			<label>Price: $6.99</label>
+		</div>
+		<button onclick="addToCart('item3')">Add To Cart</button>
+	</div>
+	
+	<div class="card" id="item4">
+		<img src="pizza.jpg">
+		<div class="title">Pizza</div>
+		<div>
+			<label>Price: $5.99</label>
+		</div>
+		<button onclick="addToCart('item4')">Add To Cart</button>
+	</div>
+	
+	<div class="card" id="item5">
+		<img src="Hot_dog.jpg">
+		<div class="title">Hot Dog</div>
+		<div>
+			<label>Price: $3.25</label>
+		</div>
+		<button onclick="addToCart('item5')">Add To Cart</button>
+	</div>
+	
+	<div class="card" id="item6">
+		<img src="biryani.webp">
+		<div class="title">Biryani</div>
+		<div>
+			<label>Price: $8.99</label>
+		</div>
+		<button onclick="addToCart('item6')">Add To Cart</button>
+	</div>
+	
+	<div class="card" id="item7">
+		<img src="nihari.webp">
+		<div class="title">Nihari</div>
+		<div>
+			<label>Price: $8.99</label>
+		</div>
+		<button onclick="addToCart('item7')">Add To Cart</button>
+	</div>
+	
+	<div class="card" id="item8">
+		<img src="haleem.jpg">
+		<div class="title">Haleem</div>
+		<div>
+			<label>Price: $8.99</label>
+		</div>
+		<button onclick="addToCart('item8')">Add To Cart</button>
+	</div>
+	
+	<div class="card" id="item9">
+		<img src="wings.jpg">
+		<div class="title">Wings</div>
+		<div>
+			<label>Price: $5.50</label>
+		</div>
+		<button onclick="addToCart('item9')">Add To Cart</button>
+	</div>
+	
+	<div class="card" id="item10">
+		<img src="fries.jpg">
+		<div class="title">Fries</div>
+		<div>
+			<label>Price: $2.99</label>
+		</div>
+		<button onclick="addToCart('item10')">Add To Cart</button>
+	</div>
+	
+	<div class="card" id="item11">
+		<img src="sandwich.jpg">
+		<div class="title">Tuna Sandwich</div>
+		<div>
+			<label>Price: $4.55</label>
+		</div>
+		<button onclick="addToCart('item11')">Add To Cart</button>
+	</div>
+	
+	<div class="card" id="item12">
+		<img src="pancakes.jpg">
+		<div class="title">Pancakes</div>
+		<div>
+			<label>Price: $3.99</label>
+		</div>
+		<button onclick="addToCart('item12')">Add To Cart</button>
+	</div>
+	
+	<div class="card" id="item13">
+		<img src="waffles.jpg">
+		<div class="title">Waffles</div>
+		<div>
+			<label>Price: $2.99</label>
+		</div>
+		<button onclick="addToCart('item13')">Add To Cart</button>
+	</div>
+	
+	<div class="card" id="item14">
+		<img src="french_toast.jpg">
+		<div class="title">French Toast</div>
+		<div>
+			<label>Price: $3.55</label>
+		</div>
+		<button onclick="addToCart('item14')">Add To Cart</button>
+	</div>
+	
+	<div class="card" id="item15">
+		<img src="eggs_benedict.jpg">
+		<div class="title">Eggs Benedict</div>
+		<div>
+			<label>Price: $6.99</label>
+		</div>
+		<button onclick="addToCart('item15')">Add To Cart</button>
+	</div>
+	
+	<div class="card" id="item16">
+		<img src="cereal.webp">
+		<div class="title">Cereal</div>
+		<div>
+			<label>Price: $2.25</label>
+		</div>
+		<button onclick="addToCart('item16')">Add To Cart</button>
+	</div>
+	
+	<div class="card" id="item17">
+		<img src="muffin.jpg">
+		<div class="title">Muffins</div>
+		<div>
+			<label>Price: $1.55</label>
+		</div>
+		<button onclick="addToCart('item17')">Add To Cart</button>
+	</div>
+	
+	<div class="card" id="item18">
+		<img src="water.jpg">
+		<div class="title">Water</div>
+		<div>
+			<label>Price: $1.00</label>	
+		</div>
+		<button onclick="addToCart('item18')">Add To Cart</button>
+	</div>
+	
+	<div class="card" id="item19">
+		<img src="soda.jpg">
+		<div class="title">Soda</div>
+		<div>
+			<label>Price: $1.00</label>
+		</div>
+		<button onclick="addToCart('item19')">Add To Cart</button>
+	</div>
+	
+	<div class="card" id="item20">
+		<img src="milkshake.jpg">
+		<div class="title">Milkshake</div>
+		<div>
+			<label>Price: $2.99</label>
+		</div>
+		<button onclick="addToCart('item20')">Add To Cart</button>
+	</div>
+	
+	<div class="card" id="item21">
+		<img src="cheesecake.jpg">
+		<div class="title">Cheesecake</div>
+		<div>
+			<label>Price: $9.99</label>
+		</div>
+		<button onclick="addToCart('item21')">Add To Cart</button>
+	</div>
+	
+	<div class="card" id="item22">
+		<img src="redvelvetcake.jpg">
+		<div class="title">Red Velvet Cake</div>
+		<div>
+			<label>Price: $7.99</label>
+		</div>
+		<button onclick="addToCart('item22')">Add To Cart</button>
+	</div>
+	
+	<div class="card" id="item23">
+		<img src="gulab_jamun.jpg">
+		<div class="title">Gulab Jamun Cheesecake</div>
+		<div>
+			<label>Price: $12.99</label>
+		</div>
+		<button onclick="addToCart('item23')">Add To Cart</button>
+	</div>
+	
+	<div class="card" id="item24">
+		<img src="oreo_cheesecake.jpg">
+		<div class="title">Oreo Cheesecake</div>
+		<div>
+			<label>Price: $11.99</label>
+		</div>
+		<button onclick="addToCart('item24')">Add To Cart</button>
+	</div>
+	
+	<div class="card" id="item25">
+		<img src="cookie_butter.jpg">
+		<div class="title">Biscoff Cheesecake</div>
+		<div>
+			<label>Price: $11.99</label>
+		</div>
+		<button onclick="addToCart('item25')">Add To Cart</button>
+	</div>
+	
+	<div class="card" id="item26">
+		<img src="ice_cream.webp">
+		<div class="title">Ice Cream</div>
+		<div>
+			<label>Price: $2.65</label>
+		</div>
+		<button onclick="addToCart('item26')">Add To Cart</button>
+	</div>
+</div>
+<br>
+<a href="index.php" class="goback-btn">Go Back</a>
+
+<div class="cart" id="cart">
+    <div class="title">CART</div>
+    <hr />
+    <div id="cartItems">
+	</div>
+	<div class="checkout-container">
+	<button id="checkoutBtn" onclick="openCheckoutPopup()" style="display: none;">Checkout</button>
+	</div>
+</div>
+
+<script src="checkout-popup.js"></script>
+<script src="addToCart.js"></script>
+</body>
+</html>

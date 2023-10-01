@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Checkout</title>
+	<!-- Your existing meta tags and styles -->
+	<link rel="stylesheet" href="checkout-popup.css">	
+</head>
+<body>
+	<div id="checkoutPopup" class="popup">
+		<div class="popup-content">
+			<h1>Checkout</h1>
+			<form>
+				<fieldset>
+					<legend><b>Method:</b></legend>
+					<div class="popup-section">
+						<label>
+							<input type="radio" name="method" value="pickup"> Pickup
+							<input type="radio" name="method" value="delivery"> Delivery
+						</label>
+					</div>
+				</fieldset>
+				<br>
+				<fieldset>
+					<legend><b>Wait Time:</b></legend>
+					<div class="popup-section">
+						<label>30-35 minutes</label> 
+					</div>
+				</fieldset>
+				<br>
+				<fieldset>
+					<legend><b>Contact:</b></legend>
+					<div class="popup-section">
+						<label>
+							<input class="popup-input" type="text" id="contactInput" placeholder="Phone/Email" required>
+						</label>
+					</div>
+				</fieldset>
+				<br>
+				<fieldset>
+					<legend><b>Payment Method:</b></legend>
+					<div class="popup-section">
+						<label>
+							<select name="payment_method">
+								<option value="Credit Card">Credit Card</option>
+								<option value="Debit Card">Debit Card</option>
+							</select>
+						</label>
+					</div>
+				</fieldset>
+				<br>
+				<fieldset>
+					<legend><b>Card Details:</b></legend>
+					<div class="popup-section">
+						<label>
+							<input class="popup-input" type="text" id="cardInput" placeholder="Card Number" required>
+						</label>
+					</div>
+					<div class="popup-section">
+						<label>
+							<input class="popup-input" type="text" id="cardExpirationInput" placeholder="Expiration Date" required>
+						</label>
+					</div>
+					<div class="popup-section">
+						<label>
+							<input class="popup-input" type="text" id="cvvInput" placeholder="CVV" required>
+						</label>
+					</div>
+				</fieldset>
+				<br>
+				<div class="popup-buttons">
+					<button class="confirmButton" id="confirmButton">Confirm</button>
+					<button type="button" class="popup-button" id="cancelButton">Cancel</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</body>
+<!-- Your existing JavaScript code -->
+<script src="checkout-popup.js"></script>
+<script src="addToCart.js"></script>
+</html>
+
+
+
+
+
+

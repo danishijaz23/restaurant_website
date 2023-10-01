@@ -1,0 +1,297 @@
+<!DOCTYPE html >
+<html>
+<head>
+  <meta charset="utf-8" >
+   <title>Food Fusion: Wings</title>
+   <style type="text/css">
+      ol, ul { 
+      list-style-type: none;
+      }
+	   
+	  .wings-form {
+      width: 70%;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      top: 13%;
+      background-color: rgba(255, 255, 255, 0.8);
+      padding: 30px;
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+      border-radius: 20px;
+      margin-bottom: 70px;
+    }
+
+	.description h1 {
+      color: #fac031;
+	  text-align: center;
+      margin-bottom: 30px;
+      margin-top: 30px;
+    }
+	
+	.description p {
+	  text-align: center; /* Center-align the descriptive text */
+	}
+
+    .wings-form fieldset legend {
+      color: #fac031;
+    }
+
+    .wings-form input[type="text"],
+    .wings-form input[type="tel"],
+    .wings-form input[type="email"],
+	.wings-form select,
+    .wings-form textarea {
+      border: 1px solid #fac031;
+	  padding: 8px;
+	  margin-bottom: 10px;
+	  width: 100%;
+      box-sizing: border-box;
+    }
+
+    .wings-form input[type="submit"] {
+      background-color: #fac031;
+      color: #fff;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .wings-form input[type="submit"]:hover {
+      background-color: #f59500;
+    }
+	
+	.goback-btn {
+	  display: inline-block;
+	  padding: 10px 20px;
+	  background-color: #f5f5f5;
+	  color: #333;
+	  border: 1px solid #ccc;
+	  text-decoration: none;
+	  font-weight: bold;
+	  cursor: pointer;
+	}
+
+	.goback-btn:hover {
+		background-color: #e0e0e0;
+	}
+   </style>
+   <script>
+   
+	function showOptions() {
+    var combo = document.querySelector('input[name="combos[]"]:checked');
+    var optionsList = document.getElementById('optionsList');
+    var options = document.getElementById('options');
+
+    if (combo) {
+      optionsList.style.display = 'block';
+      options.style.display = 'block';
+    } else {
+      optionsList.style.display = 'none';
+      options.style.display = 'none';
+      hideFlavors();
+    }
+  }
+
+  function showFlavors() {
+    var options = document.querySelector('input[name="options[]"]:checked');
+    var flavorsList = document.getElementById('flavorsList');
+    var flavors = document.getElementById('flavors');
+
+    if (options) {
+      flavorsList.style.display = 'block';
+      flavors.style.display = 'block';
+    } else {
+      hideFlavors();
+    }
+  }
+
+  function hideFlavors() {
+    var flavorsList = document.getElementById('flavorsList');
+    var flavors = document.getElementById('flavors');
+    flavorsList.style.display = 'none';
+    flavors.style.display = 'none';
+  }
+  
+  function handleFieldsetChange() {
+      var wingCombos = document.getElementsByName('combos[]');
+      var wingGroupPacks = document.getElementsByName('packs[]');
+      var wingsByPiece = document.getElementsByName('piece[]');
+
+      var wingCombosFieldset = document.getElementById('wingCombosFieldset');
+      var wingGroupPacksFieldset = document.getElementById('wingGroupPacksFieldset');
+      var wingsByPieceFieldset = document.getElementById('wingsByPieceFieldset');
+
+      if (wingCombos[0].checked || wingCombos[1].checked || wingCombos[2].checked) {
+        wingGroupPacksFieldset.disabled = true;
+        wingsByPieceFieldset.disabled = true;
+      } else if (wingGroupPacks[0].checked || wingGroupPacks[1].checked || wingGroupPacks[2].checked || wingGroupPacks[3].checked || wingGroupPacks[4].checked || wingGroupPacks[5].checked) {
+        wingCombosFieldset.disabled = true;
+        wingsByPieceFieldset.disabled = true;
+      } else if (wingsByPiece[0].checked || wingsByPiece[1].checked || wingsByPiece[2].checked || wingsByPiece[3].checked || wingsByPiece[4].checked || wingsByPiece[5].checked || wingsByPiece[6].checked) {
+        wingCombosFieldset.disabled = true;
+        wingGroupPacksFieldset.disabled = true;
+      } else {
+        wingCombosFieldset.disabled = false;
+        wingGroupPacksFieldset.disabled = false;
+        wingsByPieceFieldset.disabled = false;
+      }
+    }
+  
+   </script>
+</head>
+
+<body>
+
+<div class="description">
+<h1>Food Fusion: Wings Of Delight. Customize Your Flavor Adventure</h1>
+
+<p>An unbreaded chicken wing section (flap or drumette) that is deep-fried, then coated or dipped in a sauce of your choice.</p>
+
+
+<form action="wings.php" method="post" class="wings-form">
+
+<fieldset>
+  <legend>Your Information</legend>
+  <ul>
+    <li><label for="form-name">Name:</label> <input type="text" name="customername" id="form-name"></li>
+    <li><label for="form-address">Address:</label> <input type="text" name="address" id="form-address"></li>
+    <li><label for="form-tel">Phone Number:</label> <input type="tel" name="telephone" id="form-tel"></li>
+    <li><label for="form-email">Email: <input type="email" name="email" id="form-email"></label></li>
+    
+	<!-- PAYMENT METHOD HTML CODE -->  
+	<li><label for="form-payment">Payment Method:</label> 
+        <select name="payment_method">
+            <option value="Credit Card">Credit Card</option>
+            <option value="Debit Card">Debit Card</option>
+        </select>
+    </li>
+	
+	<li><label for="form-card">Card Number:</label> <input type="text" name="card" id="form-card"></li>
+	<li><label for="form-expiration">Expiration Date: <input type="text" name="expiration" id="form-expiration"></label></li>
+    <li><label for="form-cvv">CVV: <input type="text" name="cvv" id="form-cvv"></label></li>
+	<!-- PAYMENT METHOD HTML CODE -->
+	
+	<li>Delivery Instructions:<br>
+    <textarea name="instructions" rows="4" cols="50" maxlength="400'" id="form-story" placeholder="No more than 400 characters long"></textarea></li>
+  </ul>
+</fieldset>
+
+<h2>Wing it your way:</h2>
+
+<fieldset onchange="handleFieldsetChange()">
+  <legend>Wing Details <em>(Choose 1 out of the 2 below)</em></legend>
+  <fieldset id="wingCombosFieldset">
+  <legend>Wing Combos <em>(Choose one)</em></legend>
+    <ul>
+		<li><label><input type="radio" name="combos[]" value="small 6" onchange="showOptions()"> Small 6 pc Wing Combo</label></li>
+		<li><label><input type="radio" name="combos[]" value="medium 8" onchange="showOptions()"> Medium 8 pc Wing Combo</label></li>
+		<li><label><input type="radio" name="combos[]" value="large 10" onchange="showOptions()"> Large 10 pc Wing Combo</label></li>
+	</ul>
+
+    <legend id="optionsList" style="display: none;">Choose your wing <em>(Choose one)</em></legend>
+	<ul id="options" style="display: none;">
+		<li><label><input type="radio" name="options[]" value="bone-in" onchange="showFlavors()"> Bone-In</label></li>
+		<li><label><input type="radio" name="options[]" value="boneless" onchange="showFlavors()"> Boneless</label></li>
+	</ul>
+		
+		<legend id="flavorsList" style="display: none;"> Flavors <em>(Choose two)</em></legend>
+		<ul id="flavors" style="display: none;">
+		  <li><label><input type="checkbox" name="flavors[]" value="plain"> Plain</label></li>
+		  <li><label><input type="checkbox" name="flavors[]" value="hawaiian"> Hawaiian</label></li>
+		  <li><label><input type="checkbox" name="flavors[]" value="garlic parmesan"> Garlic Parmesan</label></li>
+		  <li><label><input type="checkbox" name="flavors[]" value="lemon pepper"> Lemon Pepper</label></li>
+		  <li><label><input type="checkbox" name="flavors[]" value="smoked bbq"> Smoked BBQ</label></li>
+		  <li><label><input type="checkbox" name="flavors[]" value="spicy korean"> Spicy Korean</label></li>
+		  <li><label><input type="checkbox" name="flavors[]" value="original hot"> Original Hot</label></li>
+		  <li><label><input type="checkbox" name="flavors[]" value="cajun"> Cajun</label></li>	
+		  <li><label><input type="checkbox" name="flavors[]" value="mango"> Mango Habanero</label></li>
+		  <li><label><input type="checkbox" name="flavors[]" value="atomic"> Atomic</label></li>		  
+		</ul>
+  </fieldset>
+  <fieldset id="wingGroupPacksFieldset">
+	<legend>Wing Group Packs <em>(Choose one)</em></legend>	
+		<ul>
+		  <li><label><input type="radio" name="packs[]" value="20" onchange="showOptions()"> 20pc Meal For 2</label></li>
+		  <!--15 Boneless or Classic (Bone-In) wings with up to 2 flavors, large fries or veggie sticks, 2 dips and 2 20oz drinks.-->
+		  <li><label><input type="radio" name="packs[]" value="30" onchange="showOptions()"> 30pc Crew Pack</label></li>
+		  <!--30 Boneless or Classic (Bone-In) wings with up to 3 flavors, large fries, veggie sticks and 3 dips. (Feeds 4-5)-->
+		  <li><label><input type="radio" name="packs[]" value="40" onchange="showOptions()"> 40pc Group Pack</label></li>
+		  <!--40 Boneless or Classic (Bone-In) wings with up to 4 flavors, large fries, 2 veggie sticks and 4 dips. (Feeds 5-6)-->
+		  <li><label><input type="radio" name="packs[]" value="50" onchange="showOptions()"> 50pc Party Pack</label></li>
+		  <!--50 Boneless or Classic (Bone-In) wings with up to 4 flavors, 2 large fries, 2 veggie sticks and 4 dips. (Feeds 6-9)-->
+		  <li><label><input type="radio" name="packs[]" value="75" onchange="showOptions()"> 75pc Pack</label></li>
+		  <!--75 Boneless or Classic (Bone-In) wings with up to 5 flavors, 3 large fries, 3 veggie sticks and 6 dips. (Feeds 9-13)-->
+		  <li><label><input type="radio" name="packs[]" value="100" onchange="showOptions()"> 100pc Pack</label></li>
+		  <!--100 Boneless or Classic (Bone-In) wings with up to 6 flavors, 4 large fries, 4 veggie sticks and 8 dips. (Feeds 13+)-->
+		</ul>
+	
+		<legend id="optionsList" style="display: none;">Choose your wing <em>(Choose one)</em></legend>
+		<ul id="options" style="display: none;">
+			<li><label><input type="radio" name="options[]" value="bone-in" onchange="showFlavors()"> Bone-In</label></li>
+			<li><label><input type="radio" name="options[]" value="boneless" onchange="showFlavors()"> Boneless</label></li>
+		</ul>
+		
+			<legend id="flavorsList" style="display: none;"> Flavors <em>(Choose two)</em></legend>
+			<ul id="flavors" style="display: none;">
+			  <li><label><input type="checkbox" name="flavors[]" value="plain"> Plain</label></li>
+			  <li><label><input type="checkbox" name="flavors[]" value="hawaiian"> Hawaiian</label></li>
+			  <li><label><input type="checkbox" name="flavors[]" value="garlic parmesan"> Garlic Parmesan</label></li>
+			  <li><label><input type="checkbox" name="flavors[]" value="lemon pepper"> Lemon Pepper</label></li>
+			  <li><label><input type="checkbox" name="flavors[]" value="smoked bbq"> Smoked BBQ</label></li>
+			  <li><label><input type="checkbox" name="flavors[]" value="spicy korean"> Spicy Korean</label></li>
+			  <li><label><input type="checkbox" name="flavors[]" value="original hot"> Original Hot</label></li>
+			  <li><label><input type="checkbox" name="flavors[]" value="cajun"> Cajun</label></li>	
+			  <li><label><input type="checkbox" name="flavors[]" value="mango"> Mango Habanero</label></li>
+			  <li><label><input type="checkbox" name="flavors[]" value="atomic"> Atomic</label></li>		  
+			</ul>
+  </fieldset>
+  
+  <fieldset>
+  <legend>Quantity</legend>
+  <p>How many wings: 
+  <select name="wings" size="1" id="quantitySelect">
+    <option>1</option>
+    <option>2</option>
+    <option>3</option>
+    <option>4</option>
+    <option>5</option>
+    <option>6</option>
+  </select>
+  </p>
+  </fieldset>
+  
+  <fieldset>
+  <legend>Total</legend>
+  <p><strong>Total Price:</strong> $<span id="totalPrice">5.50</span></p>
+  </fieldset>
+
+</fieldset>
+
+<p><input type="submit" value="Place Order">
+<input type="reset"></p>
+<a href="index.php#Menu" class="goback-btn">Go Back</a>
+
+</form>
+<script>
+  // Function to update the total price based on the quantity selected
+  function updateTotalPrice() {
+    const wingsPrice = 5.50; // Price of wings
+    const quantitySelect = document.getElementById('quantitySelect');
+    const totalPriceElement = document.getElementById('totalPrice');
+
+    const quantity = parseInt(quantitySelect.value);
+    const totalPrice = wingsPrice * quantity;
+    totalPriceElement.textContent = totalPrice.toFixed(2); // Display total with two decimal places
+  }
+
+  // Add an event listener to the quantity select element
+  const quantitySelect = document.getElementById('quantitySelect');
+  quantitySelect.addEventListener('change', updateTotalPrice);
+
+  // Call the function initially to display the default total price
+  updateTotalPrice();
+</script>
+</body>
+</html>

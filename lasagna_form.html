@@ -1,0 +1,177 @@
+<!DOCTYPE html >
+<html>
+<head>
+  <meta charset="utf-8" >
+   <title>Food Fusion: Lasagna</title>
+   <style type="text/css">
+      ol, ul { 
+      list-style-type: none;
+      }
+	   
+	  .lasagna-form {
+      width: 70%;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      top: 13%;
+      background-color: rgba(255, 255, 255, 0.8);
+      padding: 30px;
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+      border-radius: 20px;
+      margin-bottom: 70px;
+    }
+
+	.description h1 {
+      color: #fac031;
+	  text-align: center;
+      margin-bottom: 30px;
+      margin-top: 30px;
+    }
+	
+	.description p {
+	  text-align: center; /* Center-align the descriptive text */
+	}
+
+    .lasagna-form fieldset legend {
+      color: #fac031;
+    }
+
+    .lasagna-form input[type="text"],
+    .lasagna-form input[type="tel"],
+    .lasagna-form input[type="email"],
+	.lasagna-form select,
+    .lasagna-form textarea {
+      border: 1px solid #fac031;
+	  padding: 8px;
+	  margin-bottom: 10px;
+	  width: 100%;
+      box-sizing: border-box;
+    }
+
+    .lasagna-form input[type="submit"] {
+      background-color: #fac031;
+      color: #fff;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .lasagna-form input[type="submit"]:hover {
+      background-color: #f59500;
+    }
+	
+	.goback-btn {
+	  display: inline-block;
+	  padding: 10px 20px;
+	  background-color: #f5f5f5;
+	  color: #333;
+	  border: 1px solid #ccc;
+	  text-decoration: none;
+	  font-weight: bold;
+	  cursor: pointer;
+	}
+
+	.goback-btn:hover {
+		background-color: #e0e0e0;
+	}
+   </style>
+</head>
+
+<body>
+
+<div class="description">
+<h1>Food Fusion: Build Your Dream Lasagna Creation, Layer By Layer</h1>
+
+<p>Bring home your own sized Lasagna bundle feeding anywhere from 4-12 people, depending on your preference.</p>
+
+<form action="lasagna.php" method="post" class="lasagna-form">
+
+<fieldset>
+  <legend>Your Information</legend>
+  <ul>
+    <li><label for="form-name">Name:</label> <input type="text" name="customername" id="form-name"></li>
+    <li><label for="form-address">Address:</label> <input type="text" name="address" id="form-address"></li>
+    <li><label for="form-tel">Phone Number:</label> <input type="tel" name="telephone" id="form-tel"></li>
+    <li><label for="form-email">Email: <input type="email" name="email" id="form-email"></label></li>
+    
+	<!-- PAYMENT METHOD HTML CODE -->  
+	<li><label for="form-payment">Payment Method:</label> 
+        <select name="payment_method">
+            <option value="Credit Card">Credit Card</option>
+            <option value="Debit Card">Debit Card</option>
+        </select>
+    </li>
+	
+	<li><label for="form-card">Card Number:</label> <input type="text" name="card" id="form-card"></li>
+	<li><label for="form-expiration">Expiration Date: <input type="text" name="expiration" id="form-expiration"></label></li>
+    <li><label for="form-cvv">CVV: <input type="text" name="cvv" id="form-cvv"></label></li>
+	<!-- PAYMENT METHOD HTML CODE -->
+	
+	<li>Delivery Instructions:<br>
+    <textarea name="instructions" rows="4" cols="50" maxlength="400'" id="form-story" placeholder="No more than 400 characters long"></textarea></li>
+  </ul>
+</fieldset>
+
+<h2>Pick your preferred Lasagna:</h2>
+
+<fieldset>
+  <legend>Lasagna Details</legend>
+  <fieldset>
+    <legend>Select Lasagna Bundle <em>(Choose one)</em>:</legend>
+    <ul>
+      <li><label><input type="radio" name="bundle" value="classic"> Lasagna Classic (serves 2 people)</label></li>
+      <li><label><input type="radio" name="bundle" value="family"> Family-Style Lasagna Bundle (serves 4-6)</label></li>
+      <li><label><input type="radio" name="bundle" value="large"> Large Family-Style Lasagna Bundle (serves up to 12)</label></li>
+      <li><label><input type="radio" name="bundle" value="combination"> Lasagna Combination (serves 8-14)</label></li>
+    </ul>
+  </fieldset>
+
+  <fieldset>
+  <legend>Quantity</legend>
+  <p>How many lasagnas: 
+  <select name="lasagnas" size="1" id="quantitySelect">
+    <option>1</option>
+    <option>2</option>
+    <option>3</option>
+    <option>4</option>
+    <option>5</option>
+    <option>6</option>
+  </select>
+  </p>
+  </fieldset>
+
+  <fieldset>
+  <legend>Total</legend>
+  <p><strong>Total Price:</strong> $<span id="totalPrice">6.99</span></p>
+  </fieldset>
+
+</fieldset> 
+
+<p><input type="submit" value="Place Order">
+<input type="reset"></p>
+<a href="index.php#Menu" class="goback-btn">Go Back</a>
+
+</form>
+<script>
+  // Function to update the total price based on the quantity selected
+  function updateTotalPrice() {
+    const lasagnaPrice = 6.99; // Price of lasagna
+    const quantitySelect = document.getElementById('quantitySelect');
+    const totalPriceElement = document.getElementById('totalPrice');
+
+    const quantity = parseInt(quantitySelect.value);
+    const totalPrice = lasagnaPrice * quantity;
+    totalPriceElement.textContent = totalPrice.toFixed(2); // Display total with two decimal places
+  }
+
+  // Add an event listener to the quantity select element
+  const quantitySelect = document.getElementById('quantitySelect');
+  quantitySelect.addEventListener('change', updateTotalPrice);
+
+  // Call the function initially to display the default total price
+  updateTotalPrice();
+</script>
+</body>
+</html>
